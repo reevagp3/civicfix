@@ -3,6 +3,8 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+const API_BASE = "https://civicfix-ch9u.onrender.com";
+
 function getIcon(status) {
   let color = "blue";
 
@@ -32,7 +34,7 @@ export default function App() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/login", {
+      const res = await fetch(`${API_BASE}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -54,11 +56,11 @@ export default function App() {
     setLoading(false);
   };
 
-  // ---------------- FETCH COMPLAINTS (SAFE) ----------------
+  // ---------------- FETCH COMPLAINTS ----------------
   const fetchComplaints = async (userData) => {
     try {
       const res = await fetch(
-        `http://127.0.0.1:5000/get-complaints?role=${userData.role}&user_id=${userData.id}`
+        `${API_BASE}/get-complaints?role=${userData.role}&user_id=${userData.id}`
       );
 
       const data = await res.json();
