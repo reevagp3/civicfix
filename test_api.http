@@ -1,0 +1,61 @@
+### REGISTER USER
+
+POST http://127.0.0.1:5000/register
+Content-Type: application/json
+
+{
+  "full_name": "Reeva",
+  "email": "reeva@test1.com",
+  "password": "123456"
+}
+
+
+### LOGIN USER
+
+POST http://127.0.0.1:5000/login
+Content-Type: application/json
+
+{
+  "email": "reeva@test1.com",
+  "password": "123456"
+}
+
+### ADD COMPLAINT
+
+POST http://127.0.0.1:5000/add-complaint
+Content-Type: application/json
+
+{
+  "user_id": 4,
+  "title": "Streetlight not working",
+  "category": "Electricity",
+  "description": "The streetlight near our area has not been working for 5 days.",
+  "location": "Tumkur Main Road"
+}
+
+### GET ALL COMPLAINTS
+
+GET http://127.0.0.1:5000/get-complaints
+
+### UPDATE COMPLAINT STATUS
+
+PUT http://127.0.0.1:5000/update-status
+Content-Type: application/json
+
+{
+  "complaint_id": 1,
+  "new_status": "In Progress"
+}
+
+### ESCALATE COMPLAINT
+
+POST http://127.0.0.1:5000/escalate-complaint
+Content-Type: application/json
+
+{
+  "complaint_id": 1,
+  "old_status": "In Progress",
+  "new_status": "Escalated",
+  "escalated_to": "Senior Municipal Officer",
+  "notes": "No action taken for 3 days, escalation required."
+}
