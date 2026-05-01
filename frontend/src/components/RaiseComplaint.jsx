@@ -36,7 +36,7 @@ export default function RaiseComplaint({ user, onSuccess }) {
       return;
     }
 
-    await fetch("http://127.0.0.1:5000/add-complaint", {
+    await fetch("https://civicfix-backend-th6h.onrender.com/add-complaint", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -64,7 +64,6 @@ export default function RaiseComplaint({ user, onSuccess }) {
     <div style={{ padding: 20 }}>
       <h2>Raise Complaint</h2>
 
-      {/* FORM */}
       <div style={card}>
         <input placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} />
         <textarea placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
@@ -77,20 +76,11 @@ export default function RaiseComplaint({ user, onSuccess }) {
         </select>
       </div>
 
-      {/* MAP PICKER */}
       <div style={{ height: 350, borderRadius: 10, overflow: "hidden", marginBottom: 15 }}>
-        <MapContainer
-          center={[13.34, 77.1]}
-          zoom={12}
-          style={{ height: "100%", width: "100%" }}
-        >
+        <MapContainer center={[13.34, 77.1]} zoom={12} style={{ height: "100%", width: "100%" }}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
           <ClickHandler setLat={setLat} setLng={setLng} />
-
-          {lat && lng && (
-            <Marker position={[lat, lng]} icon={pinIcon()} />
-          )}
+          {lat && lng && <Marker position={[lat, lng]} icon={pinIcon()} />}
         </MapContainer>
       </div>
 
@@ -105,19 +95,5 @@ export default function RaiseComplaint({ user, onSuccess }) {
   );
 }
 
-const card = {
-  background: "white",
-  padding: 15,
-  borderRadius: 10,
-  marginBottom: 10
-};
-
-const btn = {
-  width: "100%",
-  padding: 12,
-  background: "#007bff",
-  color: "white",
-  border: "none",
-  borderRadius: 8,
-  cursor: "pointer"
-};
+const card = { background: "white", padding: 15, borderRadius: 10, marginBottom: 10 };
+const btn = { width: "100%", padding: 12, background: "#007bff", color: "white", border: "none", borderRadius: 8, cursor: "pointer" };

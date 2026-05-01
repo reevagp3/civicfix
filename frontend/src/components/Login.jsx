@@ -9,7 +9,7 @@ export default function Login({ setUser }) {
     setLoading(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/login", {
+      const res = await fetch("https://civicfix-backend-th6h.onrender.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -32,8 +32,6 @@ export default function Login({ setUser }) {
 
   return (
     <div style={wrapper}>
-
-      {/* LEFT BRAND PANEL */}
       <div style={leftPanel}>
         <h1 style={{ fontSize: 40, marginBottom: 10 }}>🏛 CivicFix</h1>
         <p style={{ fontSize: 14, opacity: 0.8, maxWidth: 300 }}>
@@ -48,7 +46,6 @@ export default function Login({ setUser }) {
         </div>
       </div>
 
-      {/* RIGHT LOGIN PANEL */}
       <div style={rightPanel}>
         <div style={glassCard}>
           <h2 style={{ marginBottom: 5 }}>Welcome Back</h2>
@@ -56,20 +53,8 @@ export default function Login({ setUser }) {
             Login to access your dashboard
           </p>
 
-          <input
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={input}
-          />
-
-          <input
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={input}
-          />
+          <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} style={input} />
+          <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={input} />
 
           <button onClick={login} style={button}>
             {loading ? "Signing in..." : "Login"}
@@ -84,61 +69,10 @@ export default function Login({ setUser }) {
   );
 }
 
-/* FULL PAGE LAYOUT */
-const wrapper = {
-  display: "flex",
-  height: "100vh",
-  fontFamily: "Segoe UI, sans-serif"
-};
-
-/* LEFT SIDE */
-const leftPanel = {
-  flex: 1,
-  background: "linear-gradient(135deg, #0f172a, #1e3a8a)",
-  color: "white",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  padding: "80px"
-};
-
-/* RIGHT SIDE */
-const rightPanel = {
-  flex: 1,
-  background: "#f4f6f8",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center"
-};
-
-/* GLASS CARD */
-const glassCard = {
-  width: 360,
-  padding: 30,
-  borderRadius: 18,
-  background: "rgba(255,255,255,0.75)",
-  backdropFilter: "blur(15px)",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.15)"
-};
-
-/* INPUT */
-const input = {
-  width: "100%",
-  padding: 12,
-  marginBottom: 12,
-  borderRadius: 10,
-  border: "1px solid #ddd",
-  outline: "none"
-};
-
-/* BUTTON */
-const button = {
-  width: "100%",
-  padding: 12,
-  border: "none",
-  borderRadius: 10,
-  background: "#2563eb",
-  color: "white",
-  fontWeight: "bold",
-  cursor: "pointer"
-};
+/* styles unchanged */
+const wrapper = { display: "flex", height: "100vh", fontFamily: "Segoe UI, sans-serif" };
+const leftPanel = { flex: 1, background: "linear-gradient(135deg, #0f172a, #1e3a8a)", color: "white", display: "flex", flexDirection: "column", justifyContent: "center", padding: "80px" };
+const rightPanel = { flex: 1, background: "#f4f6f8", display: "flex", justifyContent: "center", alignItems: "center" };
+const glassCard = { width: 360, padding: 30, borderRadius: 18, background: "rgba(255,255,255,0.75)", backdropFilter: "blur(15px)", boxShadow: "0 10px 30px rgba(0,0,0,0.15)" };
+const input = { width: "100%", padding: 12, marginBottom: 12, borderRadius: 10, border: "1px solid #ddd", outline: "none" };
+const button = { width: "100%", padding: 12, border: "none", borderRadius: 10, background: "#2563eb", color: "white", fontWeight: "bold", cursor: "pointer" };

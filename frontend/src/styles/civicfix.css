@@ -210,3 +210,28 @@ body.dark select {
     padding: 8px;
   }
 }
+
+/* =========================
+   GLOBAL SPACING SYSTEM
+========================= */
+
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* section spacing */
+h2, h3 {
+  margin-bottom: 12px;
+}
+
+/* cards spacing consistency */
+.card {
+  margin-bottom: 16px;
+}
+
+/* improve readability */
+p {
+  line-height: 1.5;
+}

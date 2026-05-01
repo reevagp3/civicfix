@@ -1,37 +1,42 @@
 export default function Topbar({ user, darkMode, setDarkMode }) {
   return (
-    <div style={{
-      height: 60,
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: "0 20px",
-      background: darkMode ? "#1f1f1f" : "white",
-      color: darkMode ? "white" : "black",
-      borderBottom: darkMode ? "1px solid #333" : "1px solid #eee"
-    }}>
-      <h3 style={{ margin: 0 }}>🏛 CivicFix</h3>
+    <div className="topbar">
 
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      {/* LEFT */}
+      <div>
+        <h3 style={{ margin: 0 }}>
+          👋 Welcome, {user.full_name}
+        </h3>
+        <small style={{ opacity: 0.6 }}>
+          Role: {user.role}
+        </small>
+      </div>
 
-        {/* DARK MODE TOGGLE */}
+      {/* RIGHT */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+
         <button
+          className="btn"
           onClick={() => setDarkMode(!darkMode)}
-          style={{
-            padding: "6px 10px",
-            borderRadius: 8,
-            border: "none",
-            background: darkMode ? "#333" : "#f0f0f0",
-            color: darkMode ? "white" : "black",
-            cursor: "pointer"
-          }}
         >
-          {darkMode ? "🌙 Dark" : "☀️ Light"}
+          {darkMode ? "🌙" : "☀️"}
         </button>
 
-        <span style={{ fontSize: 14 }}>
-          👤 {user.full_name}
-        </span>
+        <div
+          style={{
+            background: "#2563eb",
+            color: "white",
+            borderRadius: "50%",
+            width: 35,
+            height: 35,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          {user.full_name?.charAt(0)}
+        </div>
+
       </div>
     </div>
   );
