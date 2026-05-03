@@ -1,43 +1,44 @@
 export default function Topbar({ user, darkMode, setDarkMode }) {
   return (
-    <div className="topbar">
-
-      {/* LEFT */}
+    <div style={topbar}>
+      
+      {/* LEFT SIDE */}
       <div>
-        <h3 style={{ margin: 0 }}>
-          👋 Welcome, {user.full_name}
-        </h3>
-        <small style={{ opacity: 0.6 }}>
-          Role: {user.role}
-        </small>
+        <strong>{user.role.toUpperCase()}</strong>
       </div>
 
-      {/* RIGHT */}
+      {/* RIGHT SIDE */}
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
 
-        <button
-          className="btn"
-          onClick={() => setDarkMode(!darkMode)}
-        >
+        {/* DARK MODE TOGGLE */}
+        <button onClick={() => setDarkMode(!darkMode)} style={toggleBtn}>
           {darkMode ? "🌙" : "☀️"}
         </button>
 
-        <div
-          style={{
-            background: "#2563eb",
-            color: "white",
-            borderRadius: "50%",
-            width: 35,
-            height: 35,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          {user.full_name?.charAt(0)}
+        {/* USER */}
+        <div style={{ fontSize: 14 }}>
+          {user.email}
         </div>
 
       </div>
     </div>
   );
 }
+
+const topbar = {
+  height: 60,
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "0 20px",
+  background: "white",
+  borderRadius: 12,
+  marginBottom: 15
+};
+
+const toggleBtn = {
+  fontSize: 18,
+  border: "none",
+  background: "transparent",
+  cursor: "pointer"
+};

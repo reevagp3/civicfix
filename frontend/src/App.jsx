@@ -53,23 +53,47 @@ export default function App() {
   }
 
   return (
-    <div className={darkMode ? "dark" : "light"} style={{ display: "flex", height: "100vh" }}>
+    <div
+      className={darkMode ? "dark" : "light"}
+      style={{
+        display: "flex",
+        height: "100vh"
+      }}
+    >
       <Sidebar user={user} setView={setView} />
 
-      <div className="main">
-        <Topbar user={user} darkMode={darkMode} setDarkMode={setDarkMode} />
+      <div
+        className="main"
+        style={{
+          flex: 1,
+          padding: 20,
+          background: darkMode ? "#020617" : "#f1f5f9"
+        }}
+      >
+        <Topbar
+          user={user}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+        />
 
         {loading ? (
           <Spinner />
         ) : (
           <>
-            {view === "dashboard" && <Dashboard complaints={complaints} />}
+            {view === "dashboard" && (
+              <Dashboard complaints={complaints} />
+            )}
 
-            {view === "map" && <MapView complaints={complaints} />}
+            {view === "map" && (
+              <MapView complaints={complaints} />
+            )}
 
             {view === "complaints" && (
               complaints.length === 0 ? (
-                <EmptyState title="No Complaints" message="Nothing reported yet" />
+                <EmptyState
+                  title="No Complaints"
+                  message="Nothing reported yet"
+                />
               ) : (
                 complaints.map((c) => (
                   <ComplaintCard key={c.id} data={c} />
@@ -86,7 +110,10 @@ export default function App() {
 
             {view === "manage" && (
               complaints.length === 0 ? (
-                <EmptyState title="No Data" message="Nothing to manage" />
+                <EmptyState
+                  title="No Data"
+                  message="Nothing to manage"
+                />
               ) : (
                 <Table complaints={complaints} />
               )
